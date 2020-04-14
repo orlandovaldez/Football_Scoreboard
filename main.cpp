@@ -4,6 +4,7 @@
 //Football Scoreboard
 #include <iostream>
 #include <unistd.h>
+#include <iomanip>
 using namespace std;
 
 class Team 
@@ -77,15 +78,22 @@ class Scoreboard
       string color = "";
       string reset = "\x1b[0m";
 
-        //system("clear"); //clears the screen after loop refresh
+        system("clear"); //clears the screen after loop refresh
         color = "\x1b[32;1m";\
-        cout << color << " \t\t\tFootball Scoreboard\n " << reset;
+
+        cout << color << " \t\t\tFootball Scoreboard\n " << reset << endl;;
         for( int i = 0; i < 40; i++) {cout << "$";}
         cout << endl;
 
-        cout << Hometeam.getTeamName() << "\t\t\t\t\t" << Visitors.getTeamName()  << endl;
-        cout << Hometeam.getTeamScore() << "\t\t\t" << Visitors.getTeamScore() << endl;
-        cout << "Quarter: " << quarter << endl;
+        cout << "\t" << Hometeam.getTeamName() << "\t\t\t\t" << Visitors.getTeamName()  << endl;
+
+        cout << "\t" << Hometeam.getTeamScore() << "\t\t" << setw(25) << Visitors.getTeamScore() << endl;
+
+        cout << setw(15) << "\n\t\t\t\tQuarter: " << quarter << endl;
+        cout << "\n\n" << endl;
+
+        for( int i = 0; i < 40; i++) {cout << "$";}
+        cout << endl;
 
     };
 
