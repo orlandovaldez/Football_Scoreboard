@@ -102,16 +102,16 @@ class Scoreboard
 void scorebaordEdit()
 {
   Scoreboard s;
-  Team Hometeam;//object for Team that becomes Scoreboard member
-  Team Visitors;//object for Team that becomes Scoreboard member
+  Team HometeamBoard;//object for Team that becomes Scoreboard member
+  Team VisitorsBoard;//object for Team that becomes Scoreboard member
   char choice = '\0';
   int newTeamScore = 0;
   string newTeamName = "";
   string newCoachName = "";
   string newHomeCity = "";
 
-  s.setHometeam(Hometeam);
-  s.setVisitors(Visitors);
+  s.setHometeam(HometeamBoard);
+  s.setVisitors(VisitorsBoard);
 
   do 
   {
@@ -139,8 +139,8 @@ void scorebaordEdit()
       cout << "Team 1 Score Update \n";
       cout << "What is the new team name? ";
       cin >> newTeamName;
-      Hometeam.setTeamName(newTeamName);
-      cout << "Updating Team Name for Hometeam to " << Hometeam.getTeamName() << endl;
+      HometeamBoard.setTeamName(newTeamName);
+      cout << "Updating Team Name for Hometeam to " << HometeamBoard.getTeamName() << endl;
       sleep(2); 
 
     }
@@ -149,8 +149,8 @@ void scorebaordEdit()
       cout << "Teanm 2 Score Update \n";
       cout << "What is the new team name? ";
       cin >> newTeamName;
-      Visitors.setTeamName(newTeamName);
-      cout << "Updating Team  Name for Visitors to  " << Visitors.getTeamName() << endl;
+      VisitorsBoard.setTeamName(newTeamName);
+      cout << "Updating Team  Name for Visitors to  " << VisitorsBoard.getTeamName() << endl;
       sleep(2);
 
 
@@ -160,13 +160,18 @@ void scorebaordEdit()
       cout << "Hometeam Score Update \n" ;
       cout << "What is the new score? ";
       cin >> newTeamScore;
-      Hometeam.setTeamScore(newTeamScore);
-      cout << "\nUpdating New Hometown Score To ..." << Hometeam.getTeamScore() << endl;
+      HometeamBoard.setTeamScore(newTeamScore);
+      cout << "\nUpdating New Hometown Score To ..." << HometeamBoard.getTeamScore() << endl;
       sleep(2);
     }
     else if(choice == 'D' || choice == 'd')
     {
-
+      cout << "Visitor Score Update \n" ;
+      cout << "What is the new score? ";
+      cin >> newTeamScore;
+      VisitorsBoard.setTeamScore(newTeamScore);
+      cout << "\nUpdating New Visitor Score To ..." << VisitorsBoard.getTeamScore() << endl;
+      sleep(2);
     }    
     else if(choice == 'E' || choice == 'e')
     {
@@ -195,12 +200,15 @@ void scorebaordEdit()
     else if(choice == 'K' || choice == 'k')
     {
 
-    }                                    
+    }
+  s.setHometeam(HometeamBoard);
+  s.setVisitors(VisitorsBoard);               
   }while(choice != 'x' && choice != 'X');
   {
     cout << "\nAnd That's Game Over.... See Ya Later Champ" << endl;
     cout << "\nGO Cowboys! " << endl;
-  };
+  }
+
 
 }
 
