@@ -110,8 +110,20 @@ void scorebaordEdit()
     s.showScoreboard();
 
     cout << "\nMenu:" << endl;
-    cout << "A. Update Team 1 Name" << endl;
-    cout << "B. Update Team 2 Name" << endl;
+    cout << "A. Update Hometeam Name" << endl;
+    cout << "B. Update Visitors Name" << endl;
+    cout << "C. Update Hometeam Score" << endl;
+    cout << "D. Update Visitors Score" << endl;
+    cout << "E. Update Quarter " << endl;
+    cout << "F. Update Downs " << endl;
+    cout << "G. Update To Go " << endl;
+    cout << "H. Update Hometeam Coach" << endl;
+    cout << "I. Update Visitors Coach" << endl;
+    cout << "J. Update Hometeam HomeCity" << endl;
+    cout << "K. Update Visitors HomeCity" << endl;
+
+    cout << "X. To Exit Scoreboard" << endl;
+
     cin >> choice;
 
     if(choice == 'A' || choice == 'a')
@@ -177,6 +189,10 @@ void scorebaordEdit()
 
     }                                    
   }while(choice != 'x' && choice != 'X');
+  {
+    cout << "\nAnd That's Game Over.... See Ya Later Champ" << endl;
+    cout << "\nGO Cowboys! " << endl;
+  };
 
 }
 
