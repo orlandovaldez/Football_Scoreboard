@@ -1,7 +1,7 @@
 //Orlando Valdez
 //Dr_T
 //4-13-2020
-//Football Scoreboard
+//Football Scoreboard that can be interacted with in relation to updating data
 #include <iostream>
 #include <unistd.h>
 #include <iomanip>
@@ -20,7 +20,7 @@ class Team
     {
       teamName = "Team Name";
       score = 0;
-      coachName = "Coach Name";
+      coachName = "CoachName";
       HomeCity = "HomeCity";
       
     }
@@ -48,6 +48,8 @@ class Scoreboard
     bool poss;//Possesion if the home team has possession of ball true/false
     Team Hometeam;
     Team Visitors;
+    Team coachName;
+    Team HomeCity;
 
     
 
@@ -65,6 +67,8 @@ class Scoreboard
     void setPoss   (bool pos){ poss = pos; }
     void setHometeam (Team hT) { Hometeam = hT; }
     void setVisitors (Team vT) { Visitors = vT; }
+    void setcoachName (Team cH) { coachName = cH;}
+    void setHomeCity (Team Hc) { HomeCity = Hc;}
  
     int getQuarter() const { return quarter;}
     int getDown() const { return down;}
@@ -72,25 +76,30 @@ class Scoreboard
     bool getPoss() const { return poss;}
     Team getHometeam() const { return Hometeam; }
     Team getVisitors() const { return Visitors; }
+    Team getcoachName() const { return coachName;}
+    Team getHomeCity() const { return HomeCity; }
 
     void showScoreboard()
     {
-      string color,colorRed = "";
+      string color,colorRed, colorHome, colorVisitor = "";
       string reset = "\x1b[0m";
 
         system("clear"); //clears the screen after loop refresh
         color = "\x1b[32;1m";
         colorRed = "\x1b[31;15m";
+        colorHome = "\x1b[33;15m";
+        colorVisitor = "\x1b[36;15m";
 
         cout << color << "つ ◕_◕ ༽つ Football Scoreboard つ ◕_◕ ༽つ " << reset << endl;
         cout << setw(24) << "||10:37||" << endl;
         for( int i = 0; i < 40; i++) {cout << "$";}
         cout << endl;
-        cout << setw(9)<< "HomeTeam" << setw(29) <<"Visitors" << endl;
+        cout << colorHome <<setw(9)<< "HomeTeam" << colorVisitor << setw(29) <<"Visitors" << reset << endl;
         cout << setw(10) <<  Hometeam.getTeamName() << setw(29) << Visitors.getTeamName()  << endl;
 
         cout << setw(6) << Hometeam.getTeamScore() << setw(30) << Visitors.getTeamScore() << endl;
-        if(poss == true)
+
+        if(poss == true)//displays the possession of the ball initially but changes due to user input selection
         {
         cout << setw(22)  << colorRed << "O<"<< reset << " POSS" << endl;
         }
@@ -99,10 +108,15 @@ class Scoreboard
         cout << setw(22) <<  "POSS" << colorRed << " >O" << reset << endl;
 
         }
+
         cout << setw(25) << "Quarter: " << quarter << endl;
         cout << "\n" << endl;
 
         cout << setw(10) << getDown() << " < Down" << setw(16) << "To Go > " << getToGo() << "\n" << endl;
+
+        cout << colorHome << setw(6) << Hometeam.getCoachName() << colorVisitor << setw(30)<<  Visitors.getCoachName() << reset << endl;
+
+        cout << colorHome<< setw(6) << Hometeam.getHomeCity() << colorVisitor<< setw(30) << Visitors.getHomeCity() << reset << endl;
 
         for( int i = 0; i < 40; i++) {cout << "$";}
         cout << endl;
@@ -116,6 +130,7 @@ void scorebaordEdit()
   Scoreboard s;
   Team HometeamBoard;//object for Team that becomes Scoreboard member
   Team VisitorsBoard;//object for Team that becomes Scoreboard member
+  
   char choice = '\0';
   int newTeamScore = 0;
   int newQuarter = 0;
@@ -130,6 +145,7 @@ void scorebaordEdit()
 
   s.setHometeam(HometeamBoard);
   s.setVisitors(VisitorsBoard);
+  
 
   do 
   {
@@ -145,11 +161,11 @@ void scorebaordEdit()
     cout << "E. Update Quarter " << endl;
     cout << "F. Update Downs " << endl;
     cout << "G. Update To Go " << endl;
-    //cout << "H. Update Hometeam Coach" << endl;
-    //cout << "I. Update Visitors Coach" << endl;
-    //cout << "J. Update Hometeam HomeCity" << endl;
-    //cout << "K. Update Visitors HomeCity" << endl;
-    cout << "L. Update Possesion" << endl;
+    cout << "H. Update Hometeam Coach" << endl; 
+    cout << "I. Update Visitors Coach" << endl;
+    cout << "J. Update Hometeam HomeCity" << endl;
+    cout << "K. Update Visitors HomeCity" << endl;
+    cout << "L. Update Possesion" << endl;// updates the possession of the ball by user input 
 
     cout << "X. To Exit Scoreboard\n" << endl;
     cout << "Enter Choice Here....> ";
@@ -223,19 +239,39 @@ void scorebaordEdit()
     }
     else if(choice == 'H' || choice == 'h')
     {
-
+      cout << "\nHometeam Coach Name Update\n";
+      cout << "What Is The Coach Name?...>";
+      cin >> newCoachName;
+      HometeamBoard.setCoachName(newCoachName);
+      cout << "\nUpdating Coach Name To ..." << HometeamBoard.getCoachName() << endl;
+      sleep(1);
     }
     else if(choice == 'I' || choice == 'i')
     {
-
+      cout << "\nVisitors Coach Name Update\n";
+      cout << "What Is The Coach Name?...>";
+      cin >> newCoachName;
+      VisitorsBoard.setCoachName(newCoachName);
+      cout << "\nUpdating Coach Name To ..." << VisitorsBoard.getCoachName() << endl;
+      sleep(1);
     }
     else if(choice == 'J' || choice == 'j')
     {
-
+      cout << "\nHometeam City Update\n";
+      cout << "What Is The City Name?...>";
+      cin >> newHomeCity;
+      HometeamBoard.setHomeCity(newHomeCity);
+      cout << "\nUpdating Hometeam City Name To ..." << HometeamBoard.getCoachName() << endl;
+      sleep(1);
     }
     else if(choice == 'K' || choice == 'k')
     {
-
+      cout << "\nVisitors City Update\n";
+      cout << "What Is The City Name?...>";
+      cin >> newHomeCity;
+      VisitorsBoard.setHomeCity(newHomeCity);
+      cout << "\nUpdating Visitors City Name To ..." << VisitorsBoard.getCoachName() << endl;
+      sleep(1);
     }
     else if(choice == 'L' || choice == 'l')
     {
