@@ -30,12 +30,7 @@ class Team
     string getTeamName()  const { return teamName; }
     string getCoachName() const { return coachName; }
     string getHomeCity()  const { return HomeCity; }
-
-
-
-
 };
-
 
 class Scoreboard
 {
@@ -48,8 +43,6 @@ class Scoreboard
     Team Visitors;
     Team coachName;
     Team HomeCity;
-
-    
 
   public:
     Scoreboard()
@@ -118,9 +111,7 @@ class Scoreboard
 
         for( int i = 0; i < 40; i++) {cout << "$";}
         cout << endl;
-
     };
-
 };
 
 void scorebaordEdit()
@@ -144,7 +135,6 @@ void scorebaordEdit()
   s.setHometeam(HometeamBoard);
   s.setVisitors(VisitorsBoard);
   
-
   do 
   {
     s.showScoreboard();
@@ -168,7 +158,6 @@ void scorebaordEdit()
     cout << "X. To Exit Scoreboard\n" << endl;
     cout << "Enter Choice Here....> ";
     cout << MenuReset;// reset menu color to white for legibility in choice selection
-
     cin >> choice;
 
     if(choice == 'A' || choice == 'a')
@@ -287,6 +276,4 @@ void scorebaordEdit()
     cout << "\nAnd That's Game Over.... See Ya Later Champ" << endl;
     cout << "\nGO Cowboys! " << endl;
   }
-
-
 }

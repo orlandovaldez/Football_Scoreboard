@@ -6,10 +6,8 @@
 #include <unistd.h>
 #include <iomanip>
 #include "scoreboard.h"
+//use of header file for a cleaner method of main file
 using namespace std;
-
-
-
 
 int main() 
 {
